@@ -1,28 +1,30 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class AiShell : MonoBehaviour
-{
-    public GameObject explosion;
-    
+public class AIShell : MonoBehaviour {
 
-    void OnCollisionEnter(Collision col)
-    {
-        if (col.gameObject.tag == "tank")
-        {
+    public GameObject explosion;
+    Rigidbody rb;
+
+    void OnCollisionEnter(Collision col) {
+
+        if (col.gameObject.tag == "tank") {
+            Debug.Log("Hit tank");
             GameObject exp = Instantiate(explosion, this.transform.position, Quaternion.identity);
             Destroy(exp, 0.5f);
             Destroy(this.gameObject);
         }
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
+
+    void Start() {
+
+        rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void Update() {
+
+
+        this.transform.forward = rb.velocity;
     }
 }

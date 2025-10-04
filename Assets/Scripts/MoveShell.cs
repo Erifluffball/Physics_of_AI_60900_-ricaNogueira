@@ -2,20 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveShell : MonoBehaviour
-{
+public class MoveShell : MonoBehaviour {
 
-	float speed = 1.0f;
+    public float speed = 1.0f;
 
-    void Start()
-    {
 
+    void Update() {
+
+        transform.Translate(0.0f, 0.0f, Time.deltaTime * speed);
     }
-
-    void Update()
-    {
-    	this.transform.Translate(0, Time.deltaTime * speed * 0.5f, Time.deltaTime * speed);
-    }
-
-
 }
